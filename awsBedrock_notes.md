@@ -1,6 +1,9 @@
 Here is the structured markdown summary of the technical concepts and configurations covered in this portion of the video on **Amazon Bedrock Guardrails**:
 
-# Technical Notes: Amazon Bedrock Guardrails Setup
+# Technical Notes: Amazon Bedrock Guardrails Setup from the exercise
+* prompt filtering
+* using gaurd rails
+* we can filter topics the model won't talk about
 
 ## 1. Prompt Attacks Filter Configuration
 
