@@ -6,9 +6,9 @@ Here is the structured markdown summary of the technical concepts and configurat
 
 * **Purpose:** Detects and blocks user inputs that attempt to override system instructions or inject malicious prompt templates.
 * **Input Tagging:** To prevent false positives (misclassifying legitimate system prompts as prompt attacks), use explicit **input tags** in your application code.
-* **API Scope Note:**
-* Required when using `InvokeModel` or `InvokeModelResponseStream` for text content.
-* Not required for the newer `Converse` and `ConverseStream` APIs.
+- **API Scope Note:**
+  - Required when using `InvokeModel` or `InvokeModelResponseStream` for text content.
+  - Not required for the newer `Converse` and `ConverseStream` APIs.
 
 
 * **Action Settings:** Can be configured to **Block**.
