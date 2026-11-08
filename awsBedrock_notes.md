@@ -86,6 +86,28 @@ Here is the content formatted in Markdown so you can easily copy and paste it in
 * **Architecture:** `User Input` → `Knowledge Base Node` → `FM Prompt Node` → `Flow Output`
 * **Use Case:** Automatically enrich user queries with relevant enterprise context from vector search/OpenSearch before feeding the prompt to an LLM, ensuring grounded and hallucination-free answers.
 
+* ## Summary: Enforcing Use of Structured Data
+
+### 1. Prompt-Based Enforcement
+
+* **Prompt Instructions:** You can instruct the model directly within the prompt to respond strictly in structured formats (such as JSON) rather than freeform text.
+* **Schema Definition:** Clearly specify the required schema and fields (e.g., `reviewId`, `sentiment`, `summary`) within the instructions.
+* **Limitations:** Relying purely on prompts can be unpredictable, requiring faith that the model won't output markdown formatting wrappers, omitted fields, or incorrect data types.
+
+---
+
+### 2. Tool Use in Amazon Bedrock (Converse API)
+
+* **Agentic Tool Integration:** Modern foundation models support connecting to external tools to pass structured data back and forth.
+* **Simulated Tool Calling:** You can configure a mock tool via the `toolConfig` parameter in Bedrock's Converse API. By providing an `inputSchema` that expects your desired JSON structure and forcing the model to select that tool using `toolChoice`, the model produces data adhering to the schema.
+* **Real-World Effectiveness:** In practice, using tool definitions does not necessarily yield better or worse results than specifying the schema directly in the prompt—under the hood, the foundation model may simply be handling both via prompt processing.
+
+---
+
+### Key Exam Takeaway
+
+* For the AWS Certified Generative AI Developer exam, the essential concept is knowing that you can extract and enforce **structured JSON output** from foundation models, both through direct prompt engineering and by configuring tool use schemas in the Bedrock Converse API.
+
 ### 2. Multi-Stage Classification & Conditional Routing
 * **Architecture:** `Input` → `Classifier Prompt Node` → `Condition Node` → Branch A / Branch B
 * **Use Case:** Route incoming customer requests based on classification:
