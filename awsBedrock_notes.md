@@ -65,3 +65,28 @@ Here is the structured markdown summary of the technical concepts and configurat
 ## 3. How They Work Together in an Architecture
 * **Embeddings** power the background retrieval system (such as RAG and Vector Stores) to locate documents and information based on overall conceptual meaning.
 * **NER and Token-Level Redaction** act as the protective perimeter—ensuring that sensitive data doesn't leak into prompts sent to the model or leak out in the model's responses, regardless of the broader semantic context.
+
+
+Here is the content formatted in Markdown so you can easily copy and paste it into your notes:
+
+# Amazon Bedrock Prompt Flows
+
+## Core Concepts & Lecture Key Points
+* **Stored Prompts Integration:** Stored prompts created and managed in Amazon Bedrock can be directly integrated and used as building blocks within a flow.
+* **Prompt & Model Chaining:** Chain multiple prompts, Foundation Models (FMs), and processing stages together to build sophisticated pipelines.
+* **Conditional Routing:** Implement condition nodes (e.g., branching based on intent, confidence, or output categories) to route prompts to different models or actions.
+* **Pre- & Post-Processing:** Enforce custom pre-processing and post-processing steps directly on input data and model outputs.
+* **Visual Graph Interface:** Connect visual nodes—such as Flow Input, Condition, Prompt, Knowledge Base, and Flow Output—using directed data links (e.g., passing string or document types).
+
+---
+
+## Practical Applications & Use Cases
+
+### 1. Retrieval-Augmented Generation (RAG) Pipelines
+* **Architecture:** `User Input` → `Knowledge Base Node` → `FM Prompt Node` → `Flow Output`
+* **Use Case:** Automatically enrich user queries with relevant enterprise context from vector search/OpenSearch before feeding the prompt to an LLM, ensuring grounded and hallucination-free answers.
+
+### 2. Multi-Stage Classification & Conditional Routing
+* **Architecture:** `Input` → `Classifier Prompt Node` → `Condition Node` → Branch A / Branch B
+* **Use Case:** Route incoming customer requests based on classification:
+  * Technical questions
