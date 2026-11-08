@@ -46,6 +46,20 @@ Here is the structured markdown summary of the technical concepts and configurat
 | **Output Type** | Filtered, redacted, or masked plain text strings. | Lists of numbers (vectors) used to measure mathematical distance. |
 | **Operational Stage** | Acts as a **gateway filter** *around* the model to block or scrub sensitive data. | Acts as the **representation engine** *inside* systems like vector databases to retrieve relevant knowledge. |
 
+
+### Prompt Management with Amazon Bedrock
+
+* **Reusable Prompts:** Storing and sharing specialized prompts across multiple applications.
+* **Versioning:** Maintaining version history for prompts.
+* **Variables & Placeholders:** Inserting dynamic values into prompts using double curly braces (e.g., `Make me a music playlist for {{genre}} music with {{number}} songs`).
+* **Structured User Input:** Passing dynamic data directly into applications.
+
+#### Core Workflow
+
+1. **Create Prompt:** Design and save prompt templates.
+2. **Test Prompt:** Evaluate model responses inside the console.
+3. **Use Prompt:** Integrate and reuse managed prompts across applications.
+
 ---
 
 ## 3. How They Work Together in an Architecture
