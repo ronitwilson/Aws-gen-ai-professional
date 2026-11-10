@@ -112,3 +112,40 @@ Here is the content formatted in Markdown so you can easily copy and paste it in
 * **Architecture:** `Input` → `Classifier Prompt Node` → `Condition Node` → Branch A / Branch B
 * **Use Case:** Route incoming customer requests based on classification:
   * Technical questions
+
+
+  # Lecture 35: Enterprise Integration & Amazon OpenSearch
+
+## 1. Bedrock Knowledge Bases & Enterprise Integration
+
+* **Integration Points**: Serve as the core connection for internal data and document management systems (e.g., [Amazon S3](https://www.udemy.com/course/ultimate-aws-certified-generative-ai-developer-professional/), SharePoint, Atlassian Confluence).
+* **Automated Processing**: Bedrock automatically synchronizes and ingests this data into your vector stores.
+
+## 2. Cross-Account Access Architecture
+
+* **Exam Relevance**: A frequent and critical topic for the [AWS Certified Generative AI Developer - Professional](https://www.udemy.com/open-badges/1938088334) exam, particularly when Bedrock models and OpenSearch reside in separate AWS accounts.
+* **Remote-Inference Connectors**: OpenSearch uses a remote-inference connector to handle cross-account semantic search capabilities.
+* **IAM Role Requirements**:
+* Proper permissions must be configured across accounts.
+* The Bedrock account requires an IAM role that permits `InvokeModel` access from the OpenSearch account.
+
+
+
+---
+
+## 3. Deep Dive: Amazon OpenSearch Service
+
+Amazon OpenSearch Service is a distributed search, analytics, and data-storage engine (originally forked from Elasticsearch and Kibana) that acts as a foundational building block for GenAI and enterprise search on AWS.
+
+### Core Roles in Generative AI
+
+* **Vector Database for RAG**: Acts as a high-scale vector store, indexing high-dimensional vector embeddings from enterprise documents to run approximate nearest neighbor ($k$-NN) vector searches.
+* **Semantic & Neural Search**: Matches queries based on context and meaning rather than relying solely on literal keyword (BM25 lexical) matches.
+* **Hybrid Search**: Combines vector similarity scores, traditional full-text keyword searches, and metadata filters into a single blended result to improve context retrieval quality for LLMs.
+* **OpenSearch Serverless (AOSS)**: Provides a vector search collection type that eliminates the need to manually manage clusters, scale instances, or configure shard sizing.
+
+### Connection to Enterprise Integration
+
+* **Managed Vector Store**: Often serves as the default managed vector store created automatically behind the scenes when setting up a Bedrock Knowledge Base.
+* **ML Commons Integration**: Utilizes machine learning frameworks with built-in connectors to call external foundation models (like Amazon Titan Text Embeddings or Cohere on Bedrock) directly during ingestion and query execution.
+* **Centralized vs. Workload Accounts**: In large organizations, OpenSearch typically runs in a centralized data or analytics account, while Bedrock models reside in a dedicated AI account. A remote-inference connector bridges them by assuming an IAM role in the Bedrock account to run `bedrock:InvokeModel` dynamically.
