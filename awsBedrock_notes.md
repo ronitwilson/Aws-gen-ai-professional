@@ -149,3 +149,28 @@ Amazon OpenSearch Service is a distributed search, analytics, and data-storage e
 * **Managed Vector Store**: Often serves as the default managed vector store created automatically behind the scenes when setting up a Bedrock Knowledge Base.
 * **ML Commons Integration**: Utilizes machine learning frameworks with built-in connectors to call external foundation models (like Amazon Titan Text Embeddings or Cohere on Bedrock) directly during ingestion and query execution.
 * **Centralized vs. Workload Accounts**: In large organizations, OpenSearch typically runs in a centralized data or analytics account, while Bedrock models reside in a dedicated AI account. A remote-inference connector bridges them by assuming an IAM role in the Bedrock account to run `bedrock:InvokeModel` dynamically.
+
+
+# Overview of Sparse One-Hot Embeddings
+
+## What They Are
+Sparse one-hot embeddings (commonly known as one-hot encoding) represent categorical data or text as numeric vectors where most values are zero and a single value is one.
+
+## How They Work
+Each unique word or category in a vocabulary gets assigned a unique index. A vector is then created with a length equal to the total vocabulary size ($V$). Every position is filled with a `0` except for the index corresponding to the specific word, which is set to `1`.
+
+**Example with a 4-word vocabulary (`["apple", "banana", "cat", "dog"]`):**
+* **apple** = `[1, 0, 0, 0]`
+* **banana** = `[0, 1, 0, 0]`
+* **cat** = `[0, 0, 1, 0]`
+* **dog** = `[0, 0, 0, 1]`
+
+## Key Characteristics
+* **High Dimensionality:** As vocabulary sizes grow (e.g., 50,000 to 100,000+ words), vectors become extremely long and mostly filled with zeros (sparse).
+* **Orthogonality:** Because each vector has its `1` in a distinct position, the dot product between any two different word vectors is always zero.
+* **No Semantic Awareness:** They fail to capture semantic relationships or similarities between words (e.g., "cat" and "dog" are mathematically just as distant from each other as "cat" and "airplane").
+
+## Why They Are Not Used for Modern RAG
+Modern Retrieval-Augmented Generation (RAG) and vector databases (such as Amazon Bedrock Knowledge Bases) rely on **dense embeddings** (like Amazon Titan). 
+* Dense embeddings compress text into much smaller continuous dimensions (e.g., 512, 1024, or 1536 dimensions) where every value is a floating-point number.
+* This allows systems to capture semantic meaning and contextual similarity, placing related concepts close to each other in vector space.
