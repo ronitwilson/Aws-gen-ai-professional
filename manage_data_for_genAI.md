@@ -35,3 +35,30 @@ Automatically extracts, parses, and transforms unstructured data (such as docume
 
 ✍️ Prompt-Based Generation: Define and generate custom blueprints using simple natural language prompts instead of coding rigid extraction schemas.
 📦 Pre-existing Blueprints: AWS provides ready-to-use blueprints for standard, common document types (such as passports, driver's licenses, and tax documents) to speed up development.
+
+
+# AWS Certified Generative AI Developer - Professional
+# AWS Certified Generative AI Developer - Professional
+## Section 3: Managing Data for Generative AI — Lecture 40: SageMaker Data Wrangler
+
+### Overview & Core Purpose
+* **Amazon SageMaker Data Wrangler** is a visual, low-code tool built into the [Amazon SageMaker](https://www.udemy.com/career/cloud-engineer/) ecosystem (including SageMaker Studio).
+* It simplifies and accelerates the **data preparation, data cleaning, and feature engineering** process for machine learning and generative AI workloads.
+
+### Key Capabilities & Functionality
+* **End-to-End Data Flow:** Aggregates, cleans, transforms, and analyzes datasets visually without requiring extensive custom code.
+* **Pipeline Integration:** Prepares structured and unstructured datasets before feeding them into:
+  * Foundation models and training pipelines.
+  * Retrieval-Augmented Generation (RAG) knowledge stores and vector databases.
+* **Common Data Manipulation Examples:**
+  * **Data Quality & Insights:** Generating automated analysis reports to check for missing values, imbalances, and anomalies.
+  * **Column Management:** Dropping redundant or unhelpful columns (like high-cardinality ID or name fields).
+  * **Handling Missing Values:** Imputing or replacing missing data using strategies such as mean replacement or default constants.
+  * **Categorical Encoding:** Converting text and categories into machine-readable structures using One-Hot or Ordinal encoding.
+  * **Custom Transformations:** Writing tailored logic using inline Python/Pandas, PySpark, or SQL snippets.
+* **Code Export (Jupyter Notebooks):** Allows you to export your visual data prep flow as executable **Jupyter notebooks** or Python scripts to operationalize and automate your pipelines.
+* **Export Destination:** Structured to cleanly split final outputs (such as train/validation subsets) and export them back to an [Amazon S3](https://www.udemy.com/topic/data-science/) bucket.
+
+### Exam Tips for AWS AIP-C01
+* Recognize SageMaker Data Wrangler as the primary tool for **visual data transformation and feature preparation** within the SageMaker suite.
+* Differentiate it from backend data engineering tools like AWS Glue or Bedrock Data Automation by its interactive, low-code studio interface aimed at ML practitioners and developers.
